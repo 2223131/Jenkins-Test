@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven-3.9.9'  // 👈 这一段非常关键
+        maven 'Maven-3.9.9'
     }
 
     stages {
@@ -14,7 +14,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t registry.ap-southeast-1.aliyuncs.com/msbqlj/jenkins-test:latest .'
+                bat 'docker build -t registry.ap-southeast-1.aliyuncs.com/msbzyl/jenkins-test:latest .'
             }
         }
 
@@ -28,7 +28,7 @@ pipeline {
 
         stage('Push Docker Image') {
             steps {
-                bat 'docker push registry.ap-southeast-1.aliyuncs.com/msbqlj/jenkins-test:latest'
+                bat 'docker push registry.ap-southeast-1.aliyuncs.com/msbzyl/jenkins-test:latest'
             }
         }
     }
