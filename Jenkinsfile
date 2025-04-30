@@ -44,7 +44,7 @@ pipeline {
                     host: '47.97.156.15',
                     user: 'root',
                     port: 22,
-                    credentialsId: 'ecs-ssh'  // 你在Jenkins添加的SSH凭据ID
+                    credentialsId: 'ecs-ssh',
                     allowAnyHosts: true
                 ], command: '''
                     docker stop jenkins-test || true
