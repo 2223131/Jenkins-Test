@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'Maven-3.9.9'  // 👈 这一段非常关键
+    }
+
     stages {
         stage('Build JAR') {
             steps {
