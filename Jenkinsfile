@@ -41,7 +41,7 @@ pipeline {
             steps {
                 sshCommand remote: [
                     name: 'ecs-server',
-                    host: '47.97.156.15',
+                    host: 'www.Paperpuppy.chat',
                     user: 'root',
                     port: 22,
                     credentialsId: 'ecs-ssh',
