@@ -21,7 +21,13 @@ pipeline {
         stage('Login to ACR') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'aliyun-acr', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
-                    bat 'docker login -u %DOCKER_USER% -p %DOCKER_PASS% registry.cn-hangzhou.aliyuncs.com'
+                    script {
+                        bat """
+                            echo Logging in as %DOCKER_USER%
+                            docker logout registry.cn-hangzhou.aliyuncs.com
+                            docker login registry.cn-hangzhou.aliyuncs.com -u %DOCKER_USER% -p %DOCKER_PASS%
+                        """
+                    }
                 }
             }
         }
