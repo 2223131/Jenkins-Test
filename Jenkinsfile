@@ -67,7 +67,7 @@ pipeline {
                     user: 'root',
                     credentialsId: 'ecs-ssh',
                     allowAnyHosts: true
-                ], command: 'echo "✅ Jenkins 已连接 ECS 成功！"'
+                ], command: 'echo "✅ Jenkins connected ECS success！"'
             }
         }
     }
