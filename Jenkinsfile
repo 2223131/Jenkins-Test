@@ -81,7 +81,7 @@ pipeline {
     stages {
         stage('Deploy to Remote Server') {
             steps {
-                sshagent(['ecs-server']) { // 替换为你在 Jenkins 配置的凭据 ID
+                sshagent(['ecs-ssh']) { // 替换为你在 Jenkins 配置的凭据 ID
                     sh 'ssh -o StrictHostKeyChecking=no root@47.97.156.155 "echo Hello from remote server && whoami"'
                 }
             }
