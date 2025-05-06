@@ -78,21 +78,20 @@
 
 pipeline {
     agent any
+
     stages {
         stage('Deploy to Remote Server') {
             steps {
                 script {
                     def remote = [:]
-                    remote.host = "www.paperpuppy.chat"      // 替换为你的服务器 IP
-                    remote.user = "root"              // 登录用户名
-                    remote.password = "xiaoyuan+147939" // 或者使用密码（可选）
-                    remote.port = 22                  // 默认端口，如不同请修改
-                    remote.allowAnyHosts = true       // 允许首次连接未知主机
+                    remote.name = 'ecs-server' // 必须设置一个名称
+                    remote.host = '47.97.156.155'
+                    remote.user = 'root'
+                    remote.password = 'xiaoyuan+147939'
+                    remote.port = 22 // 默认SSH端口
+                    remote.allowAnyHosts = true // 忽略主机密钥检查
 
-                    sshCommand(
-                        remote: remote,
-                        command: "echo Hello from remote server && whoami"
-                    )
+                    sshCommand remote: remote, command: "echo 'Hello from ECS'"
                 }
             }
         }
