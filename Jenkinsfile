@@ -43,7 +43,6 @@ pipeline {
                     name: 'ecs-server',
                     host: 'www.paperpuppy.chat',
                     user: 'root',
-                    port: 22,
                     credentialsId: 'ecs-ssh',
                     allowAnyHosts: true
                 ], command: '''
