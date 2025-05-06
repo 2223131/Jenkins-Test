@@ -82,11 +82,16 @@ pipeline {
         stage('Deploy to Remote Server') {
             steps {
                 script {
+                    def remote = [:]
+                    remote.host = "47.97.156.155"      // 替换为你的服务器 IP
+                    remote.user = "root"              // 登录用户名
+                    remote.password = "xiaoyuan+147939" // 或者使用密码（可选）
+                    remote.port = 22                  // 默认端口，如不同请修改
+                    remote.allowAnyHosts = true       // 允许首次连接未知主机
+
                     sshCommand(
-                        hostname: '47.97.156.155',
-                        username: 'root',
-                        privateKey: credentials('ecs-ssh'), // 引用之前配置的凭据ID
-                        command: 'echo Hello from remote server && whoami'
+                        remote: remote,
+                        command: "echo Hello from remote server && whoami"
                     )
                 }
             }
