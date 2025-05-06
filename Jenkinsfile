@@ -65,9 +65,9 @@ pipeline {
                     name: 'ecs-server',
                     host: 'www.paperpuppy.chat',
                     user: 'root',
-                    keyFile: 'E:\\AAMS\\Application\\Jenkins\\ssh\\jenkins-key.pem', // 例如 C:\Users\Bean\Downloads\jenkins-key.pem
+                    credentialsId: 'ecs-ssh',
                     allowAnyHosts: true
-                ], command: 'echo "Jenkins success fully connected ECS!"'
+                ], command: 'echo "Jenkins connected ECS success!"'
             }
         }
     }
