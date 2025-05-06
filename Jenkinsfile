@@ -65,10 +65,11 @@ pipeline {
                     name: 'ecs-server',
                     host: 'www.paperpuppy.chat',
                     user: 'root',
-                    credentialsId: 'ecs-ssh',
                     port: 22,
+                    credentialsId: 'ecs-ssh',
                     allowAnyHosts: true
-                ], command: 'echo "Jenkins connected ECS success!"'
+                ],
+                command: 'hostname'
             }
         }
     }
