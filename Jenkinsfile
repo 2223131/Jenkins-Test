@@ -75,15 +75,15 @@
 //     }
 // }
 
+
 pipeline {
     agent any
-
     stages {
-        stage('Deploy to Remote Server') {
+        stage('Test SSH Connection') {
             steps {
-                sshagent(['ecs-ssh']) { // 替换为你在 Jenkins 配置的凭据 ID
-                    sh 'ssh -o StrictHostKeyChecking=no root@47.97.156.155 "echo Hello from remote server && whoami"'
-                }
+                bat '''
+                    ssh -i "C:/ProgramData/Jenkins/.jenkins/secrets/jenkins_key" root@47.97.156.155 "echo Hello from remote server"
+                '''
             }
         }
     }
