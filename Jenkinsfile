@@ -56,20 +56,34 @@
 //     }
 // }
 
+// pipeline {
+//     agent any
+//     stages {
+//         stage('Test SSH Connection') {
+//             steps {
+//                 sshCommand remote: [
+//                     name: 'ecs-server',
+//                     host: 'www.paperpuppy.chat',
+//                     user: 'root',
+//                     port: 22,
+//                     credentialsId: 'ecs-ssh',
+//                     allowAnyHosts: true
+//                 ],
+//                 command: 'hostname'
+//             }
+//         }
+//     }
+// }
+
 pipeline {
     agent any
+
     stages {
-        stage('Test SSH Connection') {
+        stage('Deploy to Remote Server') {
             steps {
-                sshCommand remote: [
-                    name: 'ecs-server',
-                    host: 'www.paperpuppy.chat',
-                    user: 'root',
-                    port: 22,
-                    credentialsId: 'ecs-ssh',
-                    allowAnyHosts: true
-                ],
-                command: 'hostname'
+                sshagent(['ecs-server']) { // 替换为你在 Jenkins 配置的凭据 ID
+                    sh 'ssh -o StrictHostKeyChecking=no root@47.97.156.155 "echo Hello from remote server && whoami"'
+                }
             }
         }
     }
