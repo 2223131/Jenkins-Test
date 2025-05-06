@@ -56,28 +56,18 @@
 //     }
 // }
 
-// pipeline {
-//     agent any
-//     stages {
-//         stage('Test SSH Connection') {
-//             steps {
-//                 sshCommand remote: [
-//                     name: 'ecs-server',
-//                     host: 'www.paperpuppy.chat',
-//                     user: 'root',
-//                     keyFile: 'E:\\AAMS\\Application\\Jenkins\\ssh\\jenkins-key.pem', // 例如 C:\Users\Bean\Downloads\jenkins-key.pem
-//                     allowAnyHosts: true
-//                 ], command: 'echo "Jenkins success fully connected ECS!"'
-//             }
-//         }
-//     }
-// }
 pipeline {
     agent any
     stages {
-        stage('Debug Key File') {
+        stage('Test SSH Connection') {
             steps {
-                bat 'type E:\\AAMS\\Application\\Jenkins\\ssh\\jenkins-key.pem'
+                sshCommand remote: [
+                    name: 'ecs-server',
+                    host: 'www.paperpuppy.chat',
+                    user: 'root',
+                    keyFile: 'E:\\AAMS\\Application\\Jenkins\\ssh\\jenkins-key.pem', // 例如 C:\Users\Bean\Downloads\jenkins-key.pem
+                    allowAnyHosts: true
+                ], command: 'echo "Jenkins success fully connected ECS!"'
             }
         }
     }
