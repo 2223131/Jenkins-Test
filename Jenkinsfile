@@ -79,11 +79,16 @@
 pipeline {
     agent any
     stages {
-        stage('Test SSH Connection') {
+        stage('Deploy to Remote Server') {
             steps {
-                bat '''
-                    ssh -i "C:/ProgramData/Jenkins/.jenkins/secrets/jenkins_key" root@47.97.156.155 "echo Hello from remote server"
-                '''
+                script {
+                    sshCommand(
+                        hostname: '47.97.156.155',
+                        username: 'root',
+                        privateKey: credentials('ecs-ssh'), // 引用之前配置的凭据ID
+                        command: 'echo Hello from remote server && whoami'
+                    )
+                }
             }
         }
     }
