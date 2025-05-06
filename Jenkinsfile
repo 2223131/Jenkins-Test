@@ -85,7 +85,7 @@ pipeline {
                 script {
                     def remote = [:]
                     remote.name = 'ecs-server' // 必须设置一个名称
-                    remote.host = '47.97.156.155'
+                    remote.host = 'www.paperpuppy.chat'
                     remote.user = 'root'
                     remote.password = 'xiaoyuan+147939'
                     remote.port = 22 // 默认SSH端口
