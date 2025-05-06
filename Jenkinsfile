@@ -83,7 +83,7 @@ pipeline {
             steps {
                 script {
                     def remote = [:]
-                    remote.host = "47.97.156.155"      // 替换为你的服务器 IP
+                    remote.host = "www.paperpuppy.chat"      // 替换为你的服务器 IP
                     remote.user = "root"              // 登录用户名
                     remote.password = "xiaoyuan+147939" // 或者使用密码（可选）
                     remote.port = 22                  // 默认端口，如不同请修改
